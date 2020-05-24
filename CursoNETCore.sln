@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Services.Api", "Projeto.Services.Api\Projeto.Services.Api.csproj", "{1D8BE80B-1E8F-4F25-AF02-2E54D70E88E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Services.Api", "Projeto.Services.Api\Projeto.Services.Api.csproj", "{1D8BE80B-1E8F-4F25-AF02-2E54D70E88E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{D0C8E99C-5BDA-4EE0-A28B-9B975FCE7DAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{CE4F6881-6819-4987-B377-48982899C68C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{B3C8FD08-1D80-4ADA-BAC0-1BC695253762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D8BE80B-1E8F-4F25-AF02-2E54D70E88E2} = {D0C8E99C-5BDA-4EE0-A28B-9B975FCE7DAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D47276E-AC80-45D0-B8D3-9D0AE3C48399}

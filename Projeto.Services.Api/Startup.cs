@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Projeto.Services.Api.Configurations;
 
 namespace Projeto.Services.Api
 {
@@ -25,6 +26,9 @@ namespace Projeto.Services.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //Setup para configuração do Swagger
+            SwaggerSetup.AddSwaggerSetup(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +47,9 @@ namespace Projeto.Services.Api
             {
                 endpoints.MapControllers();
             });
+
+            //Setup para configuração do Swagger
+            SwaggerSetup.UseSwaggerSetup(app);
         }
     }
 }
