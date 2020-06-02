@@ -19,17 +19,27 @@ namespace Projeto.Infra.Data.Context
 
         //Regra 3) Declarar um DbSet (CRUD) para cada modelo de dados
         public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Professor> Professores { get; set; }
+        public DbSet<Turma> Turmas { get; set; }
+        public DbSet<TurmaAluno> TurmasAlunos { get; set; }
 
         //Regra 4) Sobrescrita (OVERRIDE) do método OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //adicionar as classes de mapeamento
             modelBuilder.ApplyConfiguration(new AlunoMap());
+            modelBuilder.ApplyConfiguration(new ProfessorMap());
+            modelBuilder.ApplyConfiguration(new TurmaMap());
+            modelBuilder.ApplyConfiguration(new TurmaAlunoMap());   
 
             //adicionar índices na tabela
             modelBuilder.Entity<Aluno>(entity => {
                 entity.HasIndex(a => a.Cpf).IsUnique();
                 entity.HasIndex(a => a.Matricula).IsUnique();
+            });
+
+            modelBuilder.Entity<Professor>(entity => {
+                entity.HasIndex(a => a.Email).IsUnique();
             });
 
             base.OnModelCreating(modelBuilder);

@@ -4,6 +4,7 @@ using System.Data;
 using System.Text;
 using FluentValidation;
 using Projeto.Domain.Models;
+using Projeto.Domain.Validations.Commons;
 
 namespace Projeto.Domain.Validations
 {
@@ -25,10 +26,12 @@ namespace Projeto.Domain.Validations
 
             RuleFor(a => a.Cpf)
                 .NotEmpty().WithMessage("CPF do aluno obrigatório.")
-                .Length(11).WithMessage("CPF deve ter 11 caracteres.");
+                .Length(11).WithMessage("CPF deve ter 11 caracteres.")
+                .Must(CpfValidation.IsValid).WithMessage("CPF inválido.");
 
             RuleFor(a => a.DataNascimento)
-                .NotEmpty().WithMessage("Data de Nascimento do aluno obrigatória.");
+                .NotEmpty().WithMessage("Data de Nascimento do aluno obrigatória.")
+                .Must(MaiorDeIdadeValidation.IsValid).WithMessage("Aluno deve ser maior de idade.");
         }
     }
 }

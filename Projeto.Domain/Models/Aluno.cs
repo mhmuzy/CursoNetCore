@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projeto.Domain.Models
 {
-    public  class Aluno
+    public class Aluno
     {
         //prop + 2x[tab]
         public Guid Id { get; set; }
@@ -28,5 +28,11 @@ namespace Projeto.Domain.Models
             Cpf = cpf;
             DataNascimento = dataNascimento;
         }
+
+        #region Turmas
+
+        public List<TurmaAluno> Turmas { get; set; }
+
+        #endregion
     }
 }
