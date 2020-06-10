@@ -15,34 +15,44 @@ namespace Projeto.Infra.Data.Repositories
         protected readonly SqlContext context;
         protected readonly DbSet<TEntity> dbSet;
 
-        public void Add(TEntity obj)
+        //Injeção de dependência
+        public BaseRepository(SqlContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            dbSet = context.Set<TEntity>();
         }
 
-        public void Dispose()
+        public virtual void Add(TEntity obj)
         {
-            throw new NotImplementedException();
+            dbSet.Add(obj);
+            context.SaveChanges();
         }
 
-        public IQueryable<TEntity> GetAll()
+        public virtual void Update(TEntity obj)
         {
-            throw new NotImplementedException();
+            dbSet.Update(obj);
+            context.SaveChanges();
         }
 
-        public TEntity GetById(Guid id)
+        public virtual void Remove(TEntity obj)
         {
-            throw new NotImplementedException();
+            dbSet.Remove(obj);
+            context.SaveChanges();
         }
 
-        public void Remove(TEntity obj)
+        public virtual IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return dbSet;
         }
 
-        public void Update(TEntity obj)
+        public virtual TEntity GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
+        }
+
+        public virtual void Dispose()
+        {
+            context.Dispose();
         }
     }
 }
